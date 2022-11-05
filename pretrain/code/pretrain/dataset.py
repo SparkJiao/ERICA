@@ -84,7 +84,7 @@ class CP_R_Dataset(data.Dataset):
                     fflag = 0
                     for ddd_word in self.P_info[query_r]:
                         query += ddd_word
-                    #query += ori_data[i]['vertexSet'][query_h][0]['name'].split(' ')
+                    # query += ori_data[i]['vertexSet'][query_h][0]['name'].split(' ')
                     sent_id_q = ori_data[i]['vertexSet'][query_h][0]['sent_id']
                     pos_q = ori_data[i]['vertexSet'][query_h][0]['pos']
                     sent_q = ori_data[i]['sents'][sent_id_q]
