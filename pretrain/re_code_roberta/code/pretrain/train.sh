@@ -1,0 +1,3 @@
+cd /mnt/yardcephfs/mmyard/g_wxg_td_prc/yujiaqin/REAnalysis/code/pretrain
+#python main.py  --model CP_R  --lr 3e-5 --batch_size_per_gpu 16 --max_epoch 20  --gradient_accumulation_steps 16  --max_length 64  --save_step 500  --alpha 0.3  --temperature 0.05  --train_sample  --save_dir ckpt_cp_r
+python -m torch.distributed.launch --nproc_per_node $NPROC_PER_NODE  main.py  --model $MODEL  --lr 3e-5 --batch_size_per_gpu $BATCH_SIZE --max_epoch $MAX_EPOCH  --gradient_accumulation_steps $GRADIENT_STEPS  --max_length 64  --save_step $SAVE_STEPS  --alpha $ALPHA  --temperature 0.05  --train_sample  --save_dir $SAVE_DIR --n_gpu $N_GPU --shop $shop --thop $thop --qhop $qhop --dochop $dochop --debug $debug --bilinear $bilinear --bilinear_size $bilinear_size

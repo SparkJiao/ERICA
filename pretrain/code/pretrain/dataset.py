@@ -131,7 +131,7 @@ class CP_R_Dataset(data.Dataset):
                             vertexSet[j][k]['pos'][1] = pos1 + 1
                         mask_idx += 1
 
-            elif data_type == 'doc_data':
+            elif data_type == 'doc_data':  # 这个部分似乎没有什么用，因为在脚本里设置了`args.start_end_token = 0`.
                 for jj in range(len(vertexSet)):
                     for k in range(len(vertexSet[jj])):
                         sent_id = int(vertexSet[jj][k]['sent_id'])
@@ -141,7 +141,7 @@ class CP_R_Dataset(data.Dataset):
             else:
                 assert False
 
-            if self.args.start_end_token == 1:
+            if self.args.start_end_token == 1:  # 这里似乎就是为了给实体周围加上特殊token，然后相应地修改每个entity的pos
                 for j in range(len(vertexSet)):
                     if self.args.bert_model == 'bert':
                         start_token = self.start_token[start_end_shuffled[start_end_idx]]
@@ -575,7 +575,7 @@ class CP_R_Dataset(data.Dataset):
 
         for k in rel_list:
             for j in range(len(rel_list[k])):
-                if len(rel_list[k]) % 2 == 1 and j == len(rel_list[k]) - 1:
+                if len(rel_list[k]) % 2 == 1 and j == len(rel_list[k]) - 1:  # ？啥意思没看懂
                     break
                 relation_label[pos_num] = k
                 relation_label_idx[pos_num] = torch.LongTensor(rel_list[k][j])
